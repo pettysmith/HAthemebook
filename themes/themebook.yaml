@@ -1,0 +1,28 @@
+# Erzeugt von scripts/build_themes.py aus palettes.json. Nicht von Hand ändern.
+# Diese Themes setzen nur Variablen für die Viewsta-Karten und verändern sonst nichts an Home Assistant.
+"Viewsta Gelb · Silber":
+  viewsta-palette: "gelb-silber"
+"Viewsta Rosa · Blau":
+  viewsta-palette: "rosa-blau"
+"Viewsta Limette · Tanne":
+  viewsta-palette: "limette-tanne"
+"Viewsta Orange · Creme":
+  viewsta-palette: "orange-creme"
+"Viewsta Mint · Marine":
+  viewsta-palette: "mint-marine"
+"Viewsta Rot · Rosé":
+  viewsta-palette: "rot-rose"
+"Viewsta Lila · Gelb":
+  viewsta-palette: "lila-gelb"
+"Viewsta Pfirsich · Bordeaux":
+  viewsta-palette: "pfirsich-bordeaux"
+"Viewsta Blau · Eis":
+  viewsta-palette: "blau-eis"
+"Viewsta Grün · Pink":
+  viewsta-palette: "grun-pink"
+"Viewsta Silber · Schwarz":
+  viewsta-palette: "silber-schwarz"
+"Viewsta Marine · Creme":
+  viewsta-palette: "marine-creme"
+"Viewsta Nachtrot":
+  viewsta-palette: "nachtrot"
