@@ -1,10 +1,15 @@
 # Themebook
 
-Companion themes for the card collection [Viewsta](https://github.com/pettysmith/HAviewsta). Each theme only sets the palette for the Viewsta cards. It changes nothing else in Home Assistant, so it works together with any theme such as Frosted Glass.
+Companion themes for the card collection [Viewsta](https://github.com/pettysmith/HAviewsta). Version 0.2.0.
 
-## Themes
+Every palette comes as two themes:
 
-Viewsta Gelb · Silber, Rosa · Blau, Limette · Tanne, Orange · Creme, Mint · Marine, Rot · Rosé, Lila · Gelb, Pfirsich · Bordeaux, Blau · Eis, Grün · Pink, Silber · Schwarz, Marine · Creme, and Nachtrot.
+| Theme | What it does | Where to choose it |
+| --- | --- | --- |
+| `Viewsta <palette>` | Complete theme with a light and a dark version. Sets the palette of the Viewsta cards and the colors of Home Assistant (background, cards, text, primary and accent color, buttons, active states). | In your profile |
+| `Viewsta <palette> · nur Karten` | Only sets the palette of the Viewsta cards. Changes nothing else, so it works on top of any theme such as Frosted Glass. | Per view |
+
+Palettes: Gelb · Silber, Rosa · Blau, Limette · Tanne, Orange · Creme, Mint · Marine, Rot · Rosé, Lila · Gelb, Pfirsich · Bordeaux, Blau · Eis, Grün · Pink, Silber · Schwarz, Marine · Creme, and Nachtrot (dark only, everything red on black).
 
 ## Installation
 
@@ -20,7 +25,14 @@ Viewsta Gelb · Silber, Rosa · Blau, Limette · Tanne, Orange · Creme, Mint ·
 
 ## Use
 
-Do not choose these themes in your profile, that would replace your own theme. Choose one per view: Edit dashboard → pencil next to the view name → **Theme** dropdown → a Viewsta theme. Cards inside that view then use the palette. A palette set on a single card with the option `palette` always wins.
+- **Whole interface:** profile → Theme → `Viewsta <palette>`. Light or dark follows the mode chosen below the theme (or your device).
+- **One view only, keeping your own theme:** Edit dashboard → pencil next to the view name → Theme → `Viewsta <palette> · nur Karten`.
+
+A palette set on a single card with the option `palette` always wins.
+
+## Contrast
+
+The build script checks every theme and stops if a pair is too weak: text on background and cards at least 7:1 (Nachtrot 4.5:1), secondary text 4.5:1, primary color as text 4.5:1, text on primary and accent color 4.5:1, accent and active states against cards 3:1. In the light version bright accents such as yellow are darkened for text and buttons; the Viewsta cards keep the original colors.
 
 ## Build
 
