@@ -24,6 +24,15 @@ ROADMAP.md, CREDITS.md, palettes.json, README.md
 - Versionen: HAUPT.NEBEN.KORREKTUR, Veröffentlichung als Git-Tag mit Release.
 - Prüfen: YAML lesbar, Themes laden in Home Assistant (`frontend.reload_themes`), Screenshots eines Test-Dashboards.
 
+
+## Arbeitsregeln (festgelegt vom Projektinhaber)
+- Sehr kurz antworten: Ergebnis zuerst, Stichpunkte, etwa ein Viertel der früher üblichen Länge.
+- Eine Frage ist kein Auftrag. Gebaut wird erst nach ausdrücklicher Freigabe. Größere Vorhaben in Pakete teilen und einzeln vorlegen, iterativ arbeiten.
+- Etablierte Standardlösungen und vorhandene Systeme von Home Assistant nutzen, möglichst wenig selbst bauen, wartungsarm, keine Insellösungen. Selbst gestaltet werden nur feste Elemente.
+- Nichts erfinden: an der Quelle prüfen, Ungeprüftes als ungeprüft kennzeichnen.
+- Raster: Innenabstand P = 16 px (Kacheln unter 140 px: 12 px), Außenradius R = 24 px, Innenradius r = R − P. Inhalte ankern am Abstand P, Grafiken füllen die Fläche mittig. Randlos nur Fotos, geteilte Uhr, Laufband.
+- Texte nie abschneiden: einpassen oder weich ausblenden, Platz für Unterlängen.
+
 ## Quellen würdigen
 Jede genutzte Ressource (Vorbild, Dokumentation, Code, Schrift, Icon) wird vor der Veröffentlichung in CREDITS.md eingetragen: Urheber, Lizenz mit genauer Bezeichnung, wie sie genannt wird, Status (an der Quelle geprüft oder offen). Nichts als geprüft markieren, was nicht an der Quelle nachgelesen wurde.
 
