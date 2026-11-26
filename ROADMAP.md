@@ -2,6 +2,9 @@
 
 Entscheidung des Projektinhabers (0.2.0): Die Themes sollen auch im Profil stimmig aussehen. Deshalb gibt es je Palette ein vollständiges Theme mit heller und dunkler Fassung und daneben eine Fassung „nur Karten“, die andere Gestaltungen (etwa Frosted Glass) nicht überschreibt.
 
+## 0.4.0
+Vier Looks als dunkle Themes für das Profil: Duet (runde farbige Kacheln, Pfirsich · Bordeaux), Metro zeitgemäß und klassisch (quadratisch, ohne Rand, enge Fugen, Schrift von Home Assistant), Magazin (Papier, Schwarz, Rot, Archivo Black; Foto über den Hintergrund-Editor der Ansicht). Neue Variablen aus dem Frontend-Quelltext: Kartenrahmen, Abstände und Ecken der Abschnitte-Ansicht, Ecken der Symbole in Kacheln. 40 Themes, alle Kontrastprüfungen bestanden. Benötigt Viewsta 0.9.1 (Palette an der Karte hat Vorrang vor den Farben des Looks). Offen: Ansicht in einem laufenden Home Assistant.
+
 ## 0.3.0
 36 Themes: fünf neue Paletten (Himmel · Nachtblau, Zitrone · Graphit, Salbei · Tanne, Koralle · Petrol, Flieder · Tinte), je vollständig mit heller und dunkler Fassung und als „nur Karten“. Paletten gleich wie in Viewsta 0.9.0. Alle Kontrastprüfungen bestanden. Offen: Ansicht in einem laufenden Home Assistant.
 

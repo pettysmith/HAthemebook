@@ -1,6 +1,6 @@
 # Themebook
 
-Companion themes for the card collection [Viewsta](https://github.com/pettysmith/HAviewsta). Version 0.3.0.
+Companion themes for the card collection [Viewsta](https://github.com/pettysmith/HAviewsta). Version 0.4.0.
 
 Every palette comes as two themes:
 
@@ -10,6 +10,21 @@ Every palette comes as two themes:
 | `Viewsta <palette> · nur Karten` | Only sets the palette of the Viewsta cards. Changes nothing else, so it works on top of any theme such as Frosted Glass. | Per view |
 
 Palettes: Gelb · Silber, Rosa · Blau, Limette · Tanne, Orange · Creme, Mint · Marine, Rot · Rosé, Lila · Gelb, Pfirsich · Bordeaux, Blau · Eis, Grün · Pink, Silber · Schwarz, Marine · Creme, Himmel · Nachtblau, Zitrone · Graphit, Salbei · Tanne, Koralle · Petrol, Flieder · Tinte, and Nachtrot (dark only, everything red on black).
+
+## Looks
+
+Four dark themes that set shape and font as well as colors. Choose them in your profile.
+
+| Theme | Look |
+| --- | --- |
+| `Viewsta Duet` | Rounded colorful tiles in the style of a bedside clock, palette Pfirsich · Bordeaux, no borders |
+| `Viewsta Metro · zeitgemäß` | Square single-color tiles, no corners, narrow gaps (6 px), Home Assistant font, electric blue |
+| `Viewsta Metro · klassisch` | The same in classic strong colors on black, cobalt blue |
+| `Viewsta Magazin` | Paper, black and red, headline font Archivo Black |
+
+For a photo behind a view, use Home Assistant's own setting: Edit dashboard → pencil next to the view name → **Background** → upload an image and set its opacity. The Magazin look is made for black-and-white photos there.
+
+In every look you can give a single Viewsta card its own color with the option `palette`, for example several colors side by side for a mosaic in Metro. The palette on the card always wins.
 
 ## Installation
 
