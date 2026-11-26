@@ -1,6 +1,6 @@
 # Themebook
 
-Companion themes for the card collection [Viewsta](https://github.com/pettysmith/HAviewsta). Version 0.2.0.
+Companion themes for the card collection [Viewsta](https://github.com/pettysmith/HAviewsta). Version 0.3.0.
 
 Every palette comes as two themes:
 
@@ -9,7 +9,7 @@ Every palette comes as two themes:
 | `Viewsta <palette>` | Complete theme with a light and a dark version. Sets the palette of the Viewsta cards and the colors of Home Assistant (background, cards, text, primary and accent color, buttons, active states). | In your profile |
 | `Viewsta <palette> · nur Karten` | Only sets the palette of the Viewsta cards. Changes nothing else, so it works on top of any theme such as Frosted Glass. | Per view |
 
-Palettes: Gelb · Silber, Rosa · Blau, Limette · Tanne, Orange · Creme, Mint · Marine, Rot · Rosé, Lila · Gelb, Pfirsich · Bordeaux, Blau · Eis, Grün · Pink, Silber · Schwarz, Marine · Creme, and Nachtrot (dark only, everything red on black).
+Palettes: Gelb · Silber, Rosa · Blau, Limette · Tanne, Orange · Creme, Mint · Marine, Rot · Rosé, Lila · Gelb, Pfirsich · Bordeaux, Blau · Eis, Grün · Pink, Silber · Schwarz, Marine · Creme, Himmel · Nachtblau, Zitrone · Graphit, Salbei · Tanne, Koralle · Petrol, Flieder · Tinte, and Nachtrot (dark only, everything red on black).
 
 ## Installation
 
