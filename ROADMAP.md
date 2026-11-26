@@ -2,6 +2,11 @@
 
 Entscheidung des Projektinhabers (0.2.0): Die Themes sollen auch im Profil stimmig aussehen. Deshalb gibt es je Palette ein vollständiges Theme mit heller und dunkler Fassung und daneben eine Fassung „nur Karten“, die andere Gestaltungen (etwa Frosted Glass) nicht überschreibt.
 
+## 0.6.0
+Alle Themes stehen jetzt unter `modes` mit heller und dunkler Fassung (Nachtrot nur dunkel). Vorher waren die Looks und Nachtrot ohne `modes` angelegt; Home Assistant hat sie deshalb als helle Themes behandelt und seine hellen Grundfarben gemischt, etwa helle Eingabefelder mit heller Schrift. Neu: helle Fassungen für Duet, Metro zeitgemäß, Metro klassisch und Magazin. Entfernt auf Wunsch des Projektinhabers: alle Themes „nur Karten“. 25 Themes, alle Kontrastprüfungen bestanden.
+
+Hinweis zum Umstieg: Wer ein Theme „nur Karten“ in einer Ansicht gewählt hatte, stellt dort das Theme auf „Standard“ zurück oder wählt ein vollständiges Theme.
+
 ## 0.5.0
 Drei Sets mit heller und dunkler Fassung: Metro Mono, Duet Blue, Duet Orange. Jede Kartenart hat eine feste Farbe (Variablen `viewsta-<kartenart>-accent`, `-on`, `-surface`), Regler eine Kontrastfarbe (`viewsta-control`), Metro Mono mit eckigen Reglern. 43 Themes, alle Kontrastprüfungen bestanden. Benötigt Viewsta 0.10.0. Offen: Ansicht in einem laufenden Home Assistant.
 

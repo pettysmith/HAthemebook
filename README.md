@@ -1,19 +1,16 @@
 # Themebook
 
-Companion themes for the card collection [Viewsta](https://github.com/pettysmith/HAviewsta). Version 0.5.0.
+Companion themes for the card collection [Viewsta](https://github.com/pettysmith/HAviewsta). Version 0.6.0.
 
-Every palette comes as two themes:
+Every theme has a light and a dark version and is meant to be chosen in your profile. Light or dark follows the mode chosen below the theme (or your device). Nachtrot is dark only.
 
-| Theme | What it does | Where to choose it |
-| --- | --- | --- |
-| `Viewsta <palette>` | Complete theme with a light and a dark version. Sets the palette of the Viewsta cards and the colors of Home Assistant (background, cards, text, primary and accent color, buttons, active states). | In your profile |
-| `Viewsta <palette> · nur Karten` | Only sets the palette of the Viewsta cards. Changes nothing else, so it works on top of any theme such as Frosted Glass. | Per view |
+`Viewsta <palette>` sets the palette of the Viewsta cards and the colors of Home Assistant (background, cards, text, primary and accent color, buttons, active states).
 
 Palettes: Gelb · Silber, Rosa · Blau, Limette · Tanne, Orange · Creme, Mint · Marine, Rot · Rosé, Lila · Gelb, Pfirsich · Bordeaux, Blau · Eis, Grün · Pink, Silber · Schwarz, Marine · Creme, Himmel · Nachtblau, Zitrone · Graphit, Salbei · Tanne, Koralle · Petrol, Flieder · Tinte, and Nachtrot (dark only, everything red on black).
 
 ## Looks
 
-Four dark themes that set shape and font as well as colors. Choose them in your profile.
+Four themes that set shape and font as well as colors.
 
 | Theme | Look |
 | --- | --- |
@@ -52,8 +49,7 @@ In every look you can give a single Viewsta card its own color with the option `
 
 ## Use
 
-- **Whole interface:** profile → Theme → `Viewsta <palette>`. Light or dark follows the mode chosen below the theme (or your device).
-- **One view only, keeping your own theme:** Edit dashboard → pencil next to the view name → Theme → `Viewsta <palette> · nur Karten`.
+Profile → Theme → pick a Viewsta theme, then choose light, dark or automatic below it.
 
 A palette set on a single card with the option `palette` always wins.
 

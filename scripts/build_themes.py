@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
 """Erzeugt themes/themebook.yaml aus palettes.json.
 
-Je Palette entstehen zwei Themes:
-- "Viewsta <Palette>": vollständiges Theme mit heller und dunkler Fassung
-  (Schlüssel `modes`). Setzt die Palette der Viewsta-Karten und die Farben
-  von Home Assistant. Gedacht für die Auswahl im Profil.
-- "Viewsta <Palette> · nur Karten": setzt nur `viewsta-palette`. Gedacht für
-  eine einzelne Ansicht über einem anderen Theme, das unverändert bleiben soll.
+Je Palette entsteht ein Theme "Viewsta <Palette>" mit heller und dunkler Fassung
+(Schlüssel `modes`). Dazu kommen Looks und Sets. Jedes Theme steht unter `modes`:
+Home Assistant schaltet nur dann seine eigenen dunklen Grundfarben (etwa für
+Eingabefelder) ein, wenn ein Theme eine dunkle Fassung unter `modes` hat. Ein
+Theme nur mit dunkler Fassung (Nachtrot) ist damit immer dunkel.
 
 Das Skript prüft die Kontraste (WCAG) und bricht ab, wenn ein Paar zu schwach ist.
 Variablennamen: Quelltext des Home-Assistant-Frontends (siehe CREDITS.md).
@@ -168,8 +167,7 @@ def emit(out, d, indent):
 
 
 out = ["# Erzeugt von scripts/build_themes.py aus palettes.json. Nicht von Hand ändern.",
-       "# 'Viewsta <Palette>': vollständiges Theme mit heller und dunkler Fassung, für die Auswahl im Profil.",
-       "# 'Viewsta <Palette> · nur Karten': setzt nur die Palette der Viewsta-Karten, für eine Ansicht über einem anderen Theme."]
+       "# Alle Themes mit heller und dunkler Fassung unter 'modes' (Nachtrot nur dunkel), für die Auswahl im Profil."]
 items = [(p["name"], p, False) for p in pal["palettes"]] + [(pal["night"]["name"], pal["night"], True)]
 for n, p, night in items:
     out.append(f'"Viewsta {n}":')
@@ -177,47 +175,20 @@ for n, p, night in items:
     out.append('  ha-card-border-radius: "24px"')
     out.append('  ha-card-box-shadow: "none"')
     if night:
-        emit(out, mode_vars(n, p, True, True), 2)
+        out.append("  modes:")
+        out.append("    dark:")
+        emit(out, mode_vars(n, p, True, True), 6)
     else:
         out.append("  modes:")
         out.append("    light:")
         emit(out, mode_vars(n, p, False), 6)
         out.append("    dark:")
         emit(out, mode_vars(n, p, True), 6)
-for n, p, night in items:
-    out += [f'"Viewsta {n} · nur Karten":', f'  viewsta-palette: "{slug(n)}"']
 
 
-# Looks: je ein dunkles Theme für das Profil, das neben den Farben auch Form und
+# Looks: Themes mit heller und dunkler Fassung, die neben den Farben auch Form und
 # Schrift festlegt. Die Farbe einzelner Viewsta-Karten bleibt über die Option
 # `palette` an der Karte wählbar und hat Vorrang.
-def look_vars(name, bg, card, sbg, text, sec, primary, accent):
-    v = mode_vars(name, {"accent": accent, "accentInk": accent, "onAccent": "#000000",
-                         "secondary": card, "contrast": accent}, True)
-    v.update({"primary-background-color": bg, "secondary-background-color": sbg,
-              "card-background-color": card, "clear-background-color": bg,
-              "primary-text-color": text, "secondary-text-color": sec,
-              "app-header-background-color": bg, "app-header-text-color": text,
-              "state-icon-color": sec})
-    scale = {k: tone(primary, y) for k, y in SCALE.items()}
-    v.update({"primary-color": primary, "text-primary-color": bw(primary),
-              "light-primary-color": scale["80"], "text-light-primary-color": bw(scale["80"]),
-              "dark-primary-color": scale["30"], "darker-primary-color": scale["20"],
-              "accent-color": accent, "text-accent-color": bw(accent),
-              "state-active-color": accent, "state-light-active-color": accent,
-              "state-switch-active-color": accent, "ha-color-on-primary-loud": bw(scale["40"])})
-    for k, c in scale.items():
-        v[f"ha-color-primary-{k}"] = c
-    for what, fg, b, need in [("Text auf Hintergrund", text, bg, 7), ("Text auf Karte", text, card, 7),
-                              ("Nebentext auf Karte", sec, card, 4.5), ("Nebentext auf Hintergrund", sec, bg, 4.5),
-                              ("Primärfarbe als Schrift auf Karte", primary, card, 4.5),
-                              ("Schrift auf Primärfarbe", bw(primary), primary, 4.5),
-                              ("Akzent auf Karte", accent, card, 3), ("Schrift auf Akzent", bw(accent), accent, 4.5),
-                              ("Schrift auf Schaltfläche", bw(scale["40"]), scale["40"], 4.5)]:
-        check(name, "Look", what, fg, b, need)
-    return v
-
-
 def viewsta_look(name, accent, on, tint):
     """Farben der Viewsta-Karten ohne benannte Palette: Akzent, Schrift auf Akzent, Zweitfarbe."""
     check(name, "Karten", "Schrift auf Akzent", on, accent, 4.5)
@@ -237,23 +208,20 @@ LOOKS = [
      None),
     # Metro: quadratische einfarbige Kacheln, enge Fugen, Schrift von Home Assistant.
     ("Metro · zeitgemäß", dict(SQUARE, **viewsta_look("Metro · zeitgemäß", "#2f5bff", "#ffffff", "#e8e4dc")),
-     ("#101012", "#1c1c20", "#2a2a30", "#f4f4f6", "#a6a6ab", "#8fa6ff", "#c8f03c")),
+     {"dark": ("#101012", "#1c1c20", "#2a2a30", "#f4f4f6", "#a6a6ab", "#6f6f74", "#8fa6ff", "#c8f03c"),
+      "light": ("#f2f2f2", "#ffffff", "#e6e6e8", "#141414", "#5a5f64", "#a8a8ad", "#2f5bff", "#2f5bff")}),
     ("Metro · klassisch", dict(SQUARE, **viewsta_look("Metro · klassisch", "#0050ef", "#ffffff", "#a20025")),
-     ("#000000", "#1d1d1d", "#2b2b2b", "#ffffff", "#a6a6a6", "#1ba1e2", "#fa6800")),
+     {"dark": ("#000000", "#1d1d1d", "#2b2b2b", "#ffffff", "#a6a6a6", "#6f6f6f", "#1ba1e2", "#fa6800"),
+      "light": ("#ffffff", "#f2f2f2", "#e5e5e5", "#000000", "#555555", "#a8a8a8", "#0050ef", "#fa6800")}),
     # Magazin: Papier, Schwarz und Rot, Titelschrift Archivo Black. Foto über den Hintergrund-Editor der Ansicht.
     ("Magazin", dict({"viewsta-font": "archivo", "viewsta-border": "none", "ha-card-border-radius": "24px",
                       "ha-card-border-width": "0px", "ha-card-box-shadow": "none"},
                      **viewsta_look("Magazin", "#f2efe8", "#0d0d0d", "#c8102e")),
-     ("#0d0d0d", "#161616", "#232323", "#f4f1ea", "#a8a39a", "#ff5a4f", "#ff5a4f")),
+     {"dark": ("#0d0d0d", "#161616", "#232323", "#f4f1ea", "#a8a39a", "#6f6b64", "#ff5a4f", "#ff5a4f"),
+      "light": ("#f2efe8", "#ffffff", "#e6e1d6", "#141414", "#5c574f", "#a8a39a", "#c8102e", "#c8102e"),
+      "light-viewsta": viewsta_look("Magazin hell", "#161616", "#f2efe8", "#c8102e")}),
 ]
 pal_by_slug = {slug(p["name"]): p for p in pal["palettes"]}
-for n, extra, colors in LOOKS:
-    out.append(f'"Viewsta {n}":')
-    emit(out, extra, 2)
-    if colors is None:
-        emit(out, mode_vars(n, pal_by_slug["pfirsich-bordeaux"], True), 2)
-    else:
-        emit(out, look_vars(n, *colors), 2)
 
 
 # Sets: Looks mit heller und dunkler Fassung, in denen jede Kartenart eine feste Farbe hat.
@@ -343,6 +311,18 @@ SETS = [
      {"dark": ("#0b0b0c", "#1c1c1e", "#2a2a2c", "#f2f2f0", "#a6a6ab", "#6f6f74", "#ff5a1f", "#ff5a1f"),
       "light": ("#f1f1ef", "#ffffff", "#e6e6e4", "#141414", "#5a5f64", "#a8a8ad", "#ff5a1f", "#ff5a1f")}),
 ]
+for n, extra, colors in LOOKS:
+    out.append(f'"Viewsta {n}":')
+    emit(out, extra, 2)
+    out.append("  modes:")
+    for mode in ("light", "dark"):
+        out.append(f"    {mode}:")
+        if colors is None:
+            emit(out, mode_vars(n, pal_by_slug["pfirsich-bordeaux"], mode == "dark"), 6)
+        else:
+            emit(out, ha_vars(n, mode, *colors[mode]), 6)
+            emit(out, colors.get(mode + "-viewsta", {}), 6)
+
 for n, shape, mapping, colors, split, ha in SETS:
     out.append(f'"Viewsta {n}":')
     emit(out, shape, 2)
@@ -359,4 +339,4 @@ if problems:
     sys.exit(1)
 (ROOT / "themes").mkdir(exist_ok=True)
 (ROOT / "themes" / "themebook.yaml").write_text("\n".join(out) + "\n", encoding="utf-8")
-print(f"{2 * len(items) + len(LOOKS) + len(SETS)} Themes geschrieben, alle Kontraste bestanden.")
+print(f"{len(items) + len(LOOKS) + len(SETS)} Themes geschrieben, alle Kontraste bestanden.")
