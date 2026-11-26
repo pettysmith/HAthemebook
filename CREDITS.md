@@ -1,6 +1,6 @@
 # Quellen und Lizenzen
 
-Stand: 0.2.0. Jeder neue Baustein wird hier eingetragen, bevor er veröffentlicht wird.
+Stand: 0.3.0. Jeder neue Baustein wird hier eingetragen, bevor er veröffentlicht wird.
 
 | Quelle | Wofür | Lizenz | Stand |
 | --- | --- | --- | --- |
