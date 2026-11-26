@@ -142,10 +142,13 @@ def mode_vars(name, p, dark, night=False):
         "state-light-active-color": active,
         "state-switch-active-color": active,
         "ha-color-on-primary-loud": bw(scale["40"]),
+        "input-fill-color": sbg,
+        "ha-color-form-background": sbg,
     }
     for k, c in scale.items():
         v[f"ha-color-primary-{k}"] = c
     mode = "Nacht" if night else ("dunkel" if dark else "hell")
+    check(name, mode, "Text im Eingabefeld", text, sbg, 4.5)
     strong = 4.5 if night else 7
     check(name, mode, "Text auf Hintergrund", text, bg, strong)
     check(name, mode, "Text auf Karte", text, card, strong)
@@ -207,9 +210,6 @@ LOOKS = [
               "ha-card-border-radius": "24px", "ha-card-border-width": "0px", "ha-card-box-shadow": "none"},
      None),
     # Metro: quadratische einfarbige Kacheln, enge Fugen, Schrift von Home Assistant.
-    ("Metro · zeitgemäß", dict(SQUARE, **viewsta_look("Metro · zeitgemäß", "#2f5bff", "#ffffff", "#e8e4dc")),
-     {"dark": ("#101012", "#1c1c20", "#2a2a30", "#f4f4f6", "#a6a6ab", "#6f6f74", "#8fa6ff", "#c8f03c"),
-      "light": ("#f2f2f2", "#ffffff", "#e6e6e8", "#141414", "#5a5f64", "#a8a8ad", "#2f5bff", "#2f5bff")}),
     ("Metro · klassisch", dict(SQUARE, **viewsta_look("Metro · klassisch", "#0050ef", "#ffffff", "#a20025")),
      {"dark": ("#000000", "#1d1d1d", "#2b2b2b", "#ffffff", "#a6a6a6", "#6f6f6f", "#1ba1e2", "#fa6800"),
       "light": ("#ffffff", "#f2f2f2", "#e5e5e5", "#000000", "#555555", "#a8a8a8", "#0050ef", "#fa6800")}),
@@ -243,10 +243,11 @@ def ha_vars(name, mode, bg, card, sbg, text, sec, dis, primary, accent):
          "primary-text-color": text, "secondary-text-color": sec, "disabled-text-color": dis,
          "app-header-background-color": bg, "app-header-text-color": text, "state-icon-color": sec,
          "state-active-color": accent, "state-light-active-color": accent, "state-switch-active-color": accent,
-         "ha-color-on-primary-loud": bw(scale["40"])}
+         "ha-color-on-primary-loud": bw(scale["40"]), "input-fill-color": sbg, "ha-color-form-background": sbg}
     for k, c in scale.items():
         v[f"ha-color-primary-{k}"] = c
     for what, fg, b, need in [("Text auf Hintergrund", text, bg, 7), ("Text auf Karte", text, card, 7),
+                              ("Text im Eingabefeld", text, sbg, 4.5),
                               ("Nebentext auf Karte", sec, card, 4.5), ("Nebentext auf Hintergrund", sec, bg, 4.5),
                               ("Primärfarbe als Schrift auf Karte", primary, card, 4.5),
                               ("Primärfarbe als Schrift auf Hintergrund", primary, bg, 4.5),
@@ -275,7 +276,23 @@ def tile_vars(name, mode, mapping, colors, split=None):
 
 
 ALU, ALU_L, GRAPHIT, ORANGE = ("#c9cbcc", "#111111"), ("#b9bcbe", "#111111"), ("#2b2c2e", "#f2f2f0"), ("#ff5a1f", "#111111")
+PRESENT = {"B": ("#2f5bff", "#ffffff"), "S": ("#e8e4dc", "#141414"), "K": ("#ff6a3d", "#141414"),
+           "L": ("#c8f03c", "#141414"), "V": ("#b9adff", "#141414"), "G": ("#2a2a2e", "#ffffff"),
+           "T": ("#1f2a24", "#c8f03c"), "H": ("#3a3a40", "#ffffff")}
 SETS = [
+    ("Metro Present",
+     {"ha-card-border-radius": "0px", "ha-card-border-width": "0px", "ha-card-box-shadow": "none",
+      "ha-section-border-radius": "0px", "ha-tile-icon-border-radius": "0px",
+      "ha-section-grid-row-gap": "6px", "ha-section-grid-column-gap": "6px",
+      "viewsta-radius": "0px", "viewsta-border": "none", "viewsta-font": "theme",
+      "viewsta-control": "#c8f03c", "viewsta-room-control": "#2f5bff"},
+     {"clock": "B", "calendar": "S", "weather": "B", "entity": "G", "sun": "K", "todo": "S", "worldclock": "L",
+      "scenes": "V", "sensor": "V", "departures": "G", "news": "H", "timer": "K", "moon": "T", "room": "L",
+      "progress": "V", "daynight": "T", "wiki": "H"},
+     {"dark": PRESENT, "light": dict(PRESENT, S=("#2a2a2e", "#ffffff"))},
+     None,
+     {"dark": ("#101012", "#1c1c20", "#2a2a30", "#f4f4f6", "#a6a6ab", "#6f6f74", "#2f5bff", "#c8f03c"),
+      "light": ("#f2f2f2", "#ffffff", "#e6e6e8", "#141414", "#5a5f64", "#a8a8ad", "#2f5bff", "#2f5bff")}),
     ("Metro Mono",
      {"ha-card-border-radius": "0px", "ha-card-border-width": "0px", "ha-card-box-shadow": "none",
       "ha-section-border-radius": "0px", "ha-tile-icon-border-radius": "0px",

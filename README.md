@@ -1,6 +1,8 @@
 # Themebook
 
-Companion themes for the card collection [Viewsta](https://github.com/pettysmith/HAviewsta). Version 0.6.0.
+Companion themes for the card collection [Viewsta](https://github.com/pettysmith/HAviewsta). Version 0.7.0.
+
+Without a Viewsta theme (for example with Frosted Glass in your profile) the Viewsta cards follow your dashboard theme: glass, blur, border, corners and font come from that theme. Needs Viewsta 0.11.0.
 
 Every theme has a light and a dark version and is meant to be chosen in your profile. Light or dark follows the mode chosen below the theme (or your device). Nachtrot is dark only.
 
@@ -15,16 +17,16 @@ Four themes that set shape and font as well as colors.
 | Theme | Look |
 | --- | --- |
 | `Viewsta Duet` | Rounded colorful tiles in the style of a bedside clock, palette Pfirsich · Bordeaux, no borders |
-| `Viewsta Metro · zeitgemäß` | Square single-color tiles, no corners, narrow gaps (6 px), Home Assistant font, electric blue |
-| `Viewsta Metro · klassisch` | The same in classic strong colors on black, cobalt blue |
+| `Viewsta Metro · klassisch` | Square single-color tiles, no corners, narrow gaps (6 px), Home Assistant font, cobalt blue on black |
 | `Viewsta Magazin` | Paper, black and red, headline font Archivo Black |
 
 ### Sets
 
-Three themes with a light and a dark version in which every card type has its own fixed color, so a dashboard looks varied without setting colors card by card. Sliders and switches use a contrast color.
+Four themes with a light and a dark version in which every card type has its own fixed color, so a dashboard looks varied without setting colors card by card. Sliders and switches use a contrast color.
 
 | Theme | Look |
 | --- | --- |
+| `Viewsta Metro Present` | Square tiles in electric blue, stone, coral, lime, lavender, graphite and dark green, lime sliders, square controls |
 | `Viewsta Metro Mono` | Square tiles in light grey and graphite, one orange and one yellow tile, orange sliders, square controls |
 | `Viewsta Duet Blue` | Rounded tiles in light grey, ultramarine and near black, acid green for running timers and as slider color |
 | `Viewsta Duet Orange` | Rounded tiles in light grey, orange and graphite, orange sliders |
