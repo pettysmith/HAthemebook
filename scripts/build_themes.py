@@ -279,7 +279,21 @@ ALU, ALU_L, GRAPHIT, ORANGE = ("#c9cbcc", "#111111"), ("#b9bcbe", "#111111"), ("
 PRESENT = {"B": ("#2f5bff", "#ffffff"), "S": ("#e8e4dc", "#141414"), "K": ("#ff6a3d", "#141414"),
            "L": ("#c8f03c", "#141414"), "V": ("#b9adff", "#141414"), "G": ("#2a2a2e", "#ffffff"),
            "T": ("#1f2a24", "#c8f03c"), "H": ("#3a3a40", "#ffffff")}
+NORDIC = {"B": ("#e3cfa6", "#111111"), "E": ("#b4895a", "#111111"), "L": ("#1b1b1b", "#f3f1ec"),
+          "K": ("#f3f1ec", "#111111"), "R": ("#c4362b", "#ffffff"), "W": ("#24392f", "#f3f1ec")}
 SETS = [
+    ("Metro Nordic",
+     {"ha-card-border-radius": "0px", "ha-card-border-width": "0px", "ha-card-box-shadow": "none",
+      "ha-section-border-radius": "0px", "ha-tile-icon-border-radius": "0px",
+      "ha-section-grid-row-gap": "6px", "ha-section-grid-column-gap": "6px",
+      "viewsta-radius": "0px", "viewsta-border": "none", "viewsta-font": "theme", "viewsta-control": "#24392f"},
+     {"clock": "L", "calendar": "B", "weather": "E", "entity": "K", "sun": "B", "todo": "K", "worldclock": "W",
+      "scenes": "E", "sensor": "K", "departures": "L", "news": "B", "timer": "R", "moon": "W", "room": "E",
+      "progress": "R", "daynight": "W", "wiki": "B"},
+     {"dark": NORDIC, "light": dict(NORDIC, K=NORDIC["B"])},
+     None,
+     {"dark": ("#121110", "#1c1b19", "#2a2826", "#f3f1ec", "#a9a49b", "#6f6b65", "#b4895a", "#c4362b"),
+      "light": ("#ebe7df", "#fbfaf7", "#e0dbd1", "#141414", "#5c574f", "#a8a39a", "#24392f", "#24392f")}),
     ("Metro Present",
      {"ha-card-border-radius": "0px", "ha-card-border-width": "0px", "ha-card-box-shadow": "none",
       "ha-section-border-radius": "0px", "ha-tile-icon-border-radius": "0px",

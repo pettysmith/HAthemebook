@@ -2,6 +2,9 @@
 
 Entscheidung des Projektinhabers (0.2.0): Die Themes sollen auch im Profil stimmig aussehen. Deshalb gibt es je Palette ein vollständiges Theme mit heller und dunkler Fassung und daneben eine Fassung „nur Karten“, die andere Gestaltungen (etwa Frosted Glass) nicht überschreibt.
 
+## 0.8.0
+Neues Set Metro Nordic (Birke, Eiche, schwarzer Lack, Kreide, Lackrot, Waldgrün; Regler Waldgrün). 26 Themes, alle Kontrastprüfungen bestanden.
+
 ## 0.7.0
 Neues Set Metro Present (Farben aus dem Entwurf „zeitgemäß“, jede Kartenart eigene Farbe). Der Look Metro zeitgemäß entfällt, er sah fast aus wie Metro klassisch. Eingabefelder (etwa die Theme-Auswahl im Profil) haben jetzt in jeder Fassung eine eigene Fläche mit geprüftem Kontrast. 25 Themes, alle Kontrastprüfungen bestanden. Mit Viewsta 0.11.0 folgen die Karten ohne Viewsta-Theme dem Dashboard-Theme.
 

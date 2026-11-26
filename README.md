@@ -1,6 +1,6 @@
 # Themebook
 
-Companion themes for the card collection [Viewsta](https://github.com/pettysmith/HAviewsta). Version 0.7.0.
+Companion themes for the card collection [Viewsta](https://github.com/pettysmith/HAviewsta). Version 0.8.0.
 
 Without a Viewsta theme (for example with Frosted Glass in your profile) the Viewsta cards follow your dashboard theme: glass, blur, border, corners and font come from that theme. Needs Viewsta 0.11.0.
 
@@ -22,10 +22,11 @@ Four themes that set shape and font as well as colors.
 
 ### Sets
 
-Four themes with a light and a dark version in which every card type has its own fixed color, so a dashboard looks varied without setting colors card by card. Sliders and switches use a contrast color.
+Five themes with a light and a dark version in which every card type has its own fixed color, so a dashboard looks varied without setting colors card by card. Sliders and switches use a contrast color.
 
 | Theme | Look |
 | --- | --- |
+| `Viewsta Metro Nordic` | Square tiles in birch, oak, black lacquer, chalk, lacquer red and forest green, green sliders, square controls |
 | `Viewsta Metro Present` | Square tiles in electric blue, stone, coral, lime, lavender, graphite and dark green, lime sliders, square controls |
 | `Viewsta Metro Mono` | Square tiles in light grey and graphite, one orange and one yellow tile, orange sliders, square controls |
 | `Viewsta Duet Blue` | Rounded tiles in light grey, ultramarine and near black, acid green for running timers and as slider color |
