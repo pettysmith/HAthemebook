@@ -255,6 +255,103 @@ for n, extra, colors in LOOKS:
     else:
         emit(out, look_vars(n, *colors), 2)
 
+
+# Sets: Looks mit heller und dunkler Fassung, in denen jede Kartenart eine feste Farbe hat.
+# Viewsta liest dafür --viewsta-<kartenart>-<name> vor --viewsta-<name> (ab Viewsta 0.10.0).
+TYPES = ["clock", "calendar", "worldclock", "sun", "daynight", "entity", "weather", "todo", "sensor",
+         "moon", "departures", "news", "timer", "room", "scenes", "progress", "wiki"]
+
+
+def ha_vars(name, mode, bg, card, sbg, text, sec, dis, primary, accent):
+    primary = reach(reach(primary, card, 4.5), bg, 4.5)
+    accent = reach(accent, card, 3)
+    scale = {k: tone(primary, y) for k, y in SCALE.items()}
+    v = {"primary-color": primary, "text-primary-color": bw(primary),
+         "light-primary-color": scale["80"], "text-light-primary-color": bw(scale["80"]),
+         "dark-primary-color": scale["30"], "darker-primary-color": scale["20"],
+         "accent-color": accent, "text-accent-color": bw(accent),
+         "primary-background-color": bg, "secondary-background-color": sbg,
+         "card-background-color": card, "clear-background-color": bg,
+         "primary-text-color": text, "secondary-text-color": sec, "disabled-text-color": dis,
+         "app-header-background-color": bg, "app-header-text-color": text, "state-icon-color": sec,
+         "state-active-color": accent, "state-light-active-color": accent, "state-switch-active-color": accent,
+         "ha-color-on-primary-loud": bw(scale["40"])}
+    for k, c in scale.items():
+        v[f"ha-color-primary-{k}"] = c
+    for what, fg, b, need in [("Text auf Hintergrund", text, bg, 7), ("Text auf Karte", text, card, 7),
+                              ("Nebentext auf Karte", sec, card, 4.5), ("Nebentext auf Hintergrund", sec, bg, 4.5),
+                              ("Primärfarbe als Schrift auf Karte", primary, card, 4.5),
+                              ("Primärfarbe als Schrift auf Hintergrund", primary, bg, 4.5),
+                              ("Schrift auf Primärfarbe", bw(primary), primary, 4.5),
+                              ("Akzent auf Karte", accent, card, 3), ("Schrift auf Akzent", bw(accent), accent, 4.5),
+                              ("Schrift auf Schaltfläche", bw(scale["40"]), scale["40"], 4.5)]:
+        check(name, mode, what, fg, b, need)
+    return v
+
+
+def tile_vars(name, mode, mapping, colors, split=None):
+    """mapping: Kartenart -> Farbschlüssel; colors: Schlüssel -> (Fläche, Schrift).
+    split: (hell, tief) für die geteilte Uhr in Duet: links hell, rechts tief."""
+    v = {}
+    for t in TYPES:
+        if t == "clock" and split:
+            (a, a_on), (d, d_on) = colors[split[0]], colors[split[1]]
+            check(name, mode, "Uhr links", a_on, a, 4.5)
+            check(name, mode, "Uhr rechts", d_on, d, 4.5)
+            v.update({"viewsta-clock-accent": a, "viewsta-clock-ink": a, "viewsta-clock-on": a_on, "viewsta-clock-tint": d})
+            continue
+        bg, fg = colors[mapping[t]]
+        check(name, mode, f"Kachel {t}", fg, bg, 4.5)
+        v.update({f"viewsta-{t}-surface": "accent", f"viewsta-{t}-accent": bg, f"viewsta-{t}-ink": bg, f"viewsta-{t}-on": fg})
+    return v
+
+
+ALU, ALU_L, GRAPHIT, ORANGE = ("#c9cbcc", "#111111"), ("#b9bcbe", "#111111"), ("#2b2c2e", "#f2f2f0"), ("#ff5a1f", "#111111")
+SETS = [
+    ("Metro Mono",
+     {"ha-card-border-radius": "0px", "ha-card-border-width": "0px", "ha-card-box-shadow": "none",
+      "ha-section-border-radius": "0px", "ha-tile-icon-border-radius": "0px",
+      "ha-section-grid-row-gap": "6px", "ha-section-grid-column-gap": "6px",
+      "viewsta-radius": "0px", "viewsta-border": "none", "viewsta-font": "theme", "viewsta-control": "#ff5a1f"},
+     {"clock": "G", "calendar": "A", "weather": "A", "entity": "A", "sun": "A", "todo": "G", "worldclock": "G",
+      "scenes": "A", "sensor": "A", "departures": "G", "news": "A", "timer": "Y", "moon": "G", "room": "A",
+      "progress": "S", "daynight": "G", "wiki": "A"},
+     {"dark": {"A": ALU, "G": GRAPHIT, "S": ORANGE, "Y": ("#ffc700", "#111111")},
+      "light": {"A": ALU_L, "G": GRAPHIT, "S": ORANGE, "Y": ("#ffc700", "#111111")}},
+     None,
+     {"dark": ("#121212", "#1e1e20", "#2a2a2c", "#f2f2f0", "#a6a6ab", "#6f6f74", "#ff5a1f", "#ff5a1f"),
+      "light": ("#f6f6f5", "#ffffff", "#e9e9e7", "#141414", "#5a5f64", "#a8a8ad", "#ff5a1f", "#ff5a1f")}),
+    ("Duet Blue",
+     {"ha-card-border-radius": "24px", "ha-card-border-width": "0px", "ha-card-box-shadow": "none",
+      "viewsta-border": "none", "viewsta-control": "#d4ff3a", "viewsta-room-control": "#2a35e0"},
+     {"calendar": "L", "weather": "N", "entity": "N", "sun": "D", "todo": "L", "worldclock": "N", "scenes": "D",
+      "sensor": "L", "departures": "N", "news": "L", "timer": "X", "moon": "N", "room": "L", "progress": "D",
+      "daynight": "N", "wiki": "L"},
+     {"dark": {"L": ("#c7cacc", "#111214"), "D": ("#2a35e0", "#ffffff"), "N": ("#26272b", "#c7cacc"), "X": ("#d4ff3a", "#111214")},
+      "light": {"L": ("#b3b7ba", "#111214"), "D": ("#2a35e0", "#ffffff"), "N": ("#26272b", "#c7cacc"), "X": ("#d4ff3a", "#111214")}},
+     ("L", "D"),
+     {"dark": ("#0c0c0e", "#1a1b1e", "#26272b", "#f2f3f4", "#a6a8ab", "#6f7074", "#2a35e0", "#d4ff3a"),
+      "light": ("#eef0f1", "#ffffff", "#e2e5e7", "#111214", "#565b60", "#a8acb0", "#2a35e0", "#2a35e0")}),
+    ("Duet Orange",
+     {"ha-card-border-radius": "24px", "ha-card-border-width": "0px", "ha-card-box-shadow": "none",
+      "viewsta-border": "none", "viewsta-control": "#ff5a1f"},
+     {"calendar": "L", "weather": "N", "entity": "L", "sun": "D", "todo": "L", "worldclock": "N", "scenes": "D",
+      "sensor": "L", "departures": "N", "news": "L", "timer": "D", "moon": "N", "room": "L", "progress": "D",
+      "daynight": "N", "wiki": "L"},
+     {"dark": {"L": ALU, "D": ORANGE, "N": GRAPHIT}, "light": {"L": ALU_L, "D": ORANGE, "N": GRAPHIT}},
+     ("L", "D"),
+     {"dark": ("#0b0b0c", "#1c1c1e", "#2a2a2c", "#f2f2f0", "#a6a6ab", "#6f6f74", "#ff5a1f", "#ff5a1f"),
+      "light": ("#f1f1ef", "#ffffff", "#e6e6e4", "#141414", "#5a5f64", "#a8a8ad", "#ff5a1f", "#ff5a1f")}),
+]
+for n, shape, mapping, colors, split, ha in SETS:
+    out.append(f'"Viewsta {n}":')
+    emit(out, shape, 2)
+    out.append("  modes:")
+    for mode in ("light", "dark"):
+        out.append(f"    {mode}:")
+        emit(out, ha_vars(n, mode, *ha[mode]), 6)
+        emit(out, tile_vars(n, mode, mapping, colors[mode], split), 6)
+
 if problems:
     print("Kontrast zu schwach:")
     for x in problems:
@@ -262,4 +359,4 @@ if problems:
     sys.exit(1)
 (ROOT / "themes").mkdir(exist_ok=True)
 (ROOT / "themes" / "themebook.yaml").write_text("\n".join(out) + "\n", encoding="utf-8")
-print(f"{2 * len(items) + len(LOOKS)} Themes geschrieben, alle Kontraste bestanden.")
+print(f"{2 * len(items) + len(LOOKS) + len(SETS)} Themes geschrieben, alle Kontraste bestanden.")

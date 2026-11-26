@@ -1,6 +1,6 @@
 # Themebook
 
-Companion themes for the card collection [Viewsta](https://github.com/pettysmith/HAviewsta). Version 0.4.0.
+Companion themes for the card collection [Viewsta](https://github.com/pettysmith/HAviewsta). Version 0.5.0.
 
 Every palette comes as two themes:
 
@@ -21,6 +21,18 @@ Four dark themes that set shape and font as well as colors. Choose them in your 
 | `Viewsta Metro · zeitgemäß` | Square single-color tiles, no corners, narrow gaps (6 px), Home Assistant font, electric blue |
 | `Viewsta Metro · klassisch` | The same in classic strong colors on black, cobalt blue |
 | `Viewsta Magazin` | Paper, black and red, headline font Archivo Black |
+
+### Sets
+
+Three themes with a light and a dark version in which every card type has its own fixed color, so a dashboard looks varied without setting colors card by card. Sliders and switches use a contrast color.
+
+| Theme | Look |
+| --- | --- |
+| `Viewsta Metro Mono` | Square tiles in light grey and graphite, one orange and one yellow tile, orange sliders, square controls |
+| `Viewsta Duet Blue` | Rounded tiles in light grey, ultramarine and near black, acid green for running timers and as slider color |
+| `Viewsta Duet Orange` | Rounded tiles in light grey, orange and graphite, orange sliders |
+
+Needs Viewsta 0.10.0 or newer. A palette chosen on a card still wins.
 
 For a photo behind a view, use Home Assistant's own setting: Edit dashboard → pencil next to the view name → **Background** → upload an image and set its opacity. The Magazin look is made for black-and-white photos there.
 

@@ -2,6 +2,9 @@
 
 Entscheidung des Projektinhabers (0.2.0): Die Themes sollen auch im Profil stimmig aussehen. Deshalb gibt es je Palette ein vollständiges Theme mit heller und dunkler Fassung und daneben eine Fassung „nur Karten“, die andere Gestaltungen (etwa Frosted Glass) nicht überschreibt.
 
+## 0.5.0
+Drei Sets mit heller und dunkler Fassung: Metro Mono, Duet Blue, Duet Orange. Jede Kartenart hat eine feste Farbe (Variablen `viewsta-<kartenart>-accent`, `-on`, `-surface`), Regler eine Kontrastfarbe (`viewsta-control`), Metro Mono mit eckigen Reglern. 43 Themes, alle Kontrastprüfungen bestanden. Benötigt Viewsta 0.10.0. Offen: Ansicht in einem laufenden Home Assistant.
+
 ## 0.4.0
 Vier Looks als dunkle Themes für das Profil: Duet (runde farbige Kacheln, Pfirsich · Bordeaux), Metro zeitgemäß und klassisch (quadratisch, ohne Rand, enge Fugen, Schrift von Home Assistant), Magazin (Papier, Schwarz, Rot, Archivo Black; Foto über den Hintergrund-Editor der Ansicht). Neue Variablen aus dem Frontend-Quelltext: Kartenrahmen, Abstände und Ecken der Abschnitte-Ansicht, Ecken der Symbole in Kacheln. 40 Themes, alle Kontrastprüfungen bestanden. Benötigt Viewsta 0.9.1 (Palette an der Karte hat Vorrang vor den Farben des Looks). Offen: Ansicht in einem laufenden Home Assistant.
 

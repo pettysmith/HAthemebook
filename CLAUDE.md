@@ -7,7 +7,7 @@ Persönliche Arbeitsregeln des Projektinhabers und alle privaten Angaben stehen 
 Fehlt die Datei, arbeite mit den Regeln unten weiter und frage nach, statt zu raten.
 
 ## Stand
-`palettes.json`, `scripts/build_themes.py`, `themes/themebook.yaml` (40 Themes: 18 Paletten vollständig und „nur Karten“, dazu die Looks Duet, Metro zeitgemäß und klassisch, Magazin), `hacs.json`, `README.md`, `LICENSE`, `CREDITS.md`. Entscheidung des Projektinhabers (0.2.0): Die Themes sollen im Profil stimmig aussehen, deshalb setzen die vollständigen Themes wieder Farben von Home Assistant, jetzt mit heller und dunkler Fassung und geprüften Kontrasten. Wer ein anderes Theme wie Frosted Glass behalten will, nimmt die Fassung „nur Karten“ pro Ansicht.
+`palettes.json`, `scripts/build_themes.py`, `themes/themebook.yaml` (43 Themes: 18 Paletten vollständig und „nur Karten“, die Looks Duet, Metro zeitgemäß und klassisch, Magazin sowie die Sets Metro Mono, Duet Blue, Duet Orange), `hacs.json`, `README.md`, `LICENSE`, `CREDITS.md`. Entscheidung des Projektinhabers (0.2.0): Die Themes sollen im Profil stimmig aussehen, deshalb setzen die vollständigen Themes wieder Farben von Home Assistant, jetzt mit heller und dunkler Fassung und geprüften Kontrasten. Wer ein anderes Theme wie Frosted Glass behalten will, nimmt die Fassung „nur Karten“ pro Ansicht.
 
 ## Erst lesen
 ROADMAP.md, CREDITS.md, palettes.json, README.md
